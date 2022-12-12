@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import querString from "query-string";
-import { useForm } from "../../shared/hooks";
-import { HeroCard } from "../components";
-import { getHeroesByName } from "../helpers";
+import { useForm } from "../../../shared/hooks";
+import { HeroCard } from "../../components";
+import { getHeroesByName } from "../../helpers";
 
 export const SearchPage = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const SearchPage = () => {
   const onSearchSubmit = (e) => {
     e.preventDefault();
     // if (searchText.trim().length <= 1) return;
-    navigate(`/search?q=${searchText}`);
+    navigate(`?q=${searchText}`);
   };
 
   return (
@@ -56,6 +56,7 @@ export const SearchPage = () => {
           <div
             className="alert alert-danger animate__animated animate__fadeIn"
             style={{ display: !showError && "none" }}
+            aria-label="alert-danger"
           >
             No hero with <b>{q}</b>
           </div>
